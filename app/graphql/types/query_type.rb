@@ -1,12 +1,13 @@
 module Types
-  class QueryType < Types::BaseObject
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-    field :all_links, [LinkType], null: false
+  class QueryType < BaseObject
+    field :node, field: GraphQL::Relay::Node.field
+    field :nodes, field: GraphQL::Relay::Node.plural_field
 
-    # this method is invoked, when `all_link` fields is beeing resolved
-    def all_links
-      Link.all
+    field :all_links, function: Resolvers::LinksSearch
+    field :_all_links_meta, QueryMetaType, null: false
+
+    def _all_links_meta
+      Link.count
     end
   end
 end
