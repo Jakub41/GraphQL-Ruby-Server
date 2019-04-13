@@ -1,5 +1,5 @@
 module Types
-  class UserType < BaseNode
+  class UserType < BaseObject
     field :created_at, DateTimeType, null: false
     field :name, String, null: false
     field :email, String, null: false

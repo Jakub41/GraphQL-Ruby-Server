@@ -1,5 +1,5 @@
 module Types
-  class LinkType < BaseNode
+  class LinkType < BaseObject
     field :created_at, DateTimeType, null: false
     field :url, String, null: false
     field :description, String, null: false
